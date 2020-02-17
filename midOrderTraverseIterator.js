@@ -11,20 +11,40 @@ root.left.right = new Node(5)
 root.right.left = new Node(6)
 root.right.right = new Node(7)
 
-function *createIterator(root) {
-	var cur = root
-	var stack = []
+function *createPostTraverseIterator(root) {
+	let cur = root
+	let stack = []
 	while(cur || stack.length) {
 		if(cur) {
 			stack.push(cur)
 			cur = cur.left
 		} else {
-			let top = stack.pop()
-			cur = top.right
-			yield top.val
+			let top = stack[stack.length-1]
+			if(top.visited) {
+				stack.pop()
+				yield top.val
+			} else {
+				top.visited = true
+				cur = top.right
+			}
 		}
 	}
-}
+} 
+
+// function *createIterator(root) {
+// 	var cur = root
+// 	var stack = []
+// 	while(cur || stack.length) {
+// 		if(cur) {
+// 			stack.push(cur)
+// 			cur = cur.left
+// 		} else {
+// 			let top = stack.pop()
+// 			cur = top.right
+// 			yield top.val
+// 		}
+// 	}
+// }
 
 // var createIterator = function (root) {
 // 	var cur = root
@@ -53,7 +73,8 @@ function *createIterator(root) {
 // 	}
 // }
 
-var i = createIterator(root)
+// var i = createIterator(root)
+var i = createPostTraverseIterator(root)
 
 console.log(i.next())
 console.log(i.next())

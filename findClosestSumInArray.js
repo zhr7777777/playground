@@ -1,4 +1,5 @@
 // Find closest sum 54 in arr [10, 22, 28, 29, 30, 40], which are 22 and 30
+// Ali
 
 var nums = [10, 22, 28, 29, 30, 40]
 

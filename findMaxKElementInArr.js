@@ -1,5 +1,5 @@
+// xmly前端面试算法题 
 // n个元素数组取k个最大值
-
 
 let findMaxArr = function(arr, k) {
 	for(let i=0; i<k; i++) {

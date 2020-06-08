@@ -1,4 +1,4 @@
-function bind(fn, context) {
+function bind(context, fn) {
 	return function () {
 		return fn.apply(context, arguments)
 	}

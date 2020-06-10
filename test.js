@@ -58,3 +58,13 @@
 // var test = "/a/../../b/../c//.//"
 
 // console.log(simplifyPath(test))
+
+// const arr = [1]
+// console.log(arr instanceof Array)
+// console.log(arr.constructor === Array)
+
+function test() {
+    this.name = 'aa'
+}
+
+console.log(test.prototype)

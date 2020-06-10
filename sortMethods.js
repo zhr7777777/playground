@@ -63,7 +63,27 @@ const selectSort = arr => {
     return sortedArr
 }
 
+const insertionSort = arr => {
+    const sorted = arr.slice(0, 1)
+    const unsorted = arr.slice(1)
+    for(let i=0; i<unsorted.length; i++) {
+        let cur = unsorted[i]
+        let sortedLength = sorted.length
+        for(let j=0; j<sortedLength; j++) {
+            if(cur <= sorted[j]) {
+                sorted.splice(j, 0, cur)
+                break
+            }
+        }
+        if(sortedLength === sorted.length) {
+            sorted.push(cur)
+        }
+    }
+    return sorted
+}
+
 console.log(sort(arr))
 console.log(quickSort(arr))
 console.log(bubbleSort(arr))
 console.log(selectSort(arr))
+console.log(insertionSort(arr))

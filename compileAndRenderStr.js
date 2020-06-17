@@ -6,16 +6,17 @@ let compile = str => {
   //   let attr = matches[i].match(/\${(.*)}/)
   //   attrs.push(attr[1])
   // }
-  let regExec = /\${([^}]*)}/g
+  let regEx = /\${([^}]*)}/g
   let attrs = []
   while(true) {
-    let onceMatch = regExec.exec(str)
+    let onceMatch = regEx.exec(str)
+    console.log(onceMatch)
     if(!onceMatch) {
       break
     }
     attrs.push(onceMatch[1])
   }
-  console.log(attrs)
+  // console.log(attrs)
 
   return function (obj) {
     for(let i=0; i<attrs.length; i++) {

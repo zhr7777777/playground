@@ -2,13 +2,14 @@
 var add = function () {
 	var args = []
 	var adder = function () {
-		args = args.concat(Array.from(arguments))
+		// args = args.concat(Array.from(arguments))
+		args = args.concat([...arguments])
 		return adder	// return itself to make add call multiple times
 	}
 	adder.toString = function () {
 		return args.reduce((pre, cur) => pre + cur, 0)
 	}
-	return adder.apply(null, Array.from(arguments)) // pass cur arguments
+	return adder.apply(null, [...arguments]) // pass cur arguments
 }
 
 

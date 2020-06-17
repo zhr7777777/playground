@@ -5,20 +5,23 @@ const labelArrItems = arr => {
     for(let i=0; i<arr.length; i++) {
         if(map.has(arr[i])) {
             const labels = map.get(arr[i])
-            labels.push(labels.length)
+            labels.push(labels.length+1)
             map.set(arr[i], labels)
         } else {
-            map.set(arr[i], [1])
+            const initLabels = [1]
+            initLabels.idx = 0
+            map.set(arr[i], initLabels)
         }
     }
     for(let i=0; i<arr.length; i++) {
-        if(map.get(arr[i]).length === 1) continue
         let labels = map.get(arr[i])
-        arr[i] = String(labels[0]) + arr[i]
+        if(labels.length === 1) continue
+        let labeledItem = String(labels[labels.idx]) + arr[i]
         if(typeof arr[i] === 'number') {
-            arr[i] = Number(arr[i])
+            labeledItem = Number(labeledItem)
         }
-        labels.shift()
+        arr[i] = labeledItem
+        labels.idx++
         map.set(arr[i], labels)
     }
     return arr

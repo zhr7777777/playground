@@ -37,7 +37,7 @@ const rearrangeStr = str => {
         result[index] = result[index] + str[i]
         index++
     }
-    return result
+    return result.join(' ')
 }
 
 console.log(rearrangeStr("abc def ghi"))

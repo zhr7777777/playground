@@ -63,29 +63,51 @@
 // console.log(arr instanceof Array)
 // console.log(arr.constructor === Array)
 
-function test() {
-    this.name = 'aa'
-}
+// function test() {
+//     this.name = 'aa'
+// }
 
-console.log(test.prototype)
+// console.log(test.prototype)
 
-/**
- * @param {number} x
- * @return {number}
- */
-var mySqrt = function(x) {  // 使用二分查找
-    if(x < 2) return x
-    let left = 1
-    let right = parseInt(x / 2)
-    while(left <= right) {
-        let mid = left + parseInt((right - left) / 2)
-        let mul = mid * mid
-        if(mul === x) return mid
-        if(mul < x) {
-            left = mid + 1
-        } else {
-            right = mid - 1
-        }
-    }
-    return right
-};
+// /**
+//  * @param {number} x
+//  * @return {number}
+//  */
+// var mySqrt = function(x) {  // 使用二分查找
+//     if(x < 2) return x
+//     let left = 1
+//     let right = parseInt(x / 2)
+//     while(left <= right) {
+//         let mid = left + parseInt((right - left) / 2)
+//         let mul = mid * mid
+//         if(mul === x) return mid
+//         if(mul < x) {
+//             left = mid + 1
+//         } else {
+//             right = mid - 1
+//         }
+//     }
+//     return right
+// };
+
+// const mySqrt = num => {
+//     if(num < 2) return num
+//     let start = 1
+//     let end = parseInt(num / 2) // 5
+//     while(end >= start) {
+//         let mid = start + parseInt((end - start) / 2) // 3
+//         let mul = mid * mid
+//         if(mul === num) return mid
+//         if(mul > num) {
+//             end = mid - 1 // 3
+//         } else {
+//             start = mid + 1 //
+//         }
+//     }
+//     return end
+// }
+
+// console.log(mySqrt(10))
+
+let a = {}
+console.log(a.toString())

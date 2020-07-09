@@ -23,7 +23,7 @@ class LazyMan {
 
   sleep(time) {
     this.queue.push(() => {
-      // console.log('sleep ' + time)
+      console.log('sleep ' + time)
       setTimeout(() => {
         this.next()
       }, time * 1000)
@@ -46,6 +46,6 @@ let man = new LazyMan()
 
 man.eat('apple').sleep(3).eat('pear').sleep(5)
 // man.sleep(5).eat('apple')
-// man.sleep(5)
 // man.eat('apple')
 // man.sleepOnly(5)
+// man.eat('apple').sleep(3)

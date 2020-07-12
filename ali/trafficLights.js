@@ -1,3 +1,5 @@
+// 模拟红绿灯，3s红灯，1s黄灯，1s绿灯，循环输出
+
 // thunk
 class TrafficLights {
   constructor() {

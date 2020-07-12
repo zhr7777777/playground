@@ -1,4 +1,5 @@
-var str = 'haoRan'
+// haoRan => hao_ran
+
 var toUnderlineCase = function (str) {
 	var result = ''
 	for(let i=0; i<str.length; i++) {
@@ -13,4 +14,4 @@ var toUnderlineCase = function (str) {
 	return result
 }
 
-toUnderlineCase(str)
+console.log(toUnderlineCase('haoRan'))

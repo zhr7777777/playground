@@ -1,3 +1,5 @@
+// 给2元，3元，5元纸币，凑整n元
+
 // const countChange = n => {
 //   let count = 0
 //   for (let i = 0; i * 2 <= n; i++) {

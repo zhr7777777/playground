@@ -17,27 +17,6 @@ var data = [{
 	id: 1
 }]
 
-// var DFS = function(data, target) {
-// 	for(let i=0; i<data.length; i++) {
-// 		if(stop) return
-// 		path.push(data[i].id)
-// 		if(data[i].id === target) {
-// 			stop = true
-// 			break
-// 		}
-// 		if(data[i].children && data[i].children.length) {
-// 			DFS(data[i].children, target)
-// 		}
-// 		if(!stop) {
-// 			path.pop()
-// 		}
-// 	}
-// 	return
-// }
-// DFS(data, 2)
-
-// console.log(path)
-
 const DFS = data => {
 	for(let i=0; i<data.length; i++) {
 		console.log(data[i].id)

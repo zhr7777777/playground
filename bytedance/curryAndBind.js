@@ -1,6 +1,7 @@
 function bind(context, fn) {
 	return function () {
-		return fn.apply(context, arguments)
+		var re = fn.apply(context, arguments)
+		return re
 	}
 }
 
@@ -8,7 +9,8 @@ function bind(context, fn) {
 function curry(fn) {
 	var args = Array.from(arguments).slice(1)	// 取出传入curry的参数，先把类数组arguments转化成数组
 	return function () {	// 返回柯里化之后的函数
-		return fn.apply(null, args.concat(Array.from(arguments))) // 之前的参数和传入柯里化之后函数的参数合并
+		var re = fn.apply(null, args.concat(Array.from(arguments))) // 之前的参数和传入柯里化之后函数的参数合并
+		return re
 	}
 }
 
@@ -18,4 +20,4 @@ var add = function (a, b) {
 
 curriedAdd = curry(add, 2)
 
-curriedAdd(3)
+console.log(curriedAdd(3))

@@ -1,0 +1,53 @@
+<html>
+
+<head></head>
+<body>
+  <div id="1">
+    1
+    <div id="2">
+      2
+      <div id="4">4</div>
+    </div>
+    <div id="3">
+      3
+      <div id="5">5</div>
+      <div id="6">
+        6
+        <div id="7">7</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+
+  // 找到两个dom节点最近的父节点，实质就是链表找交叉节点
+  let n1 = document.getElementById('5')
+  let n2 = document.getElementById('7')
+
+  const findCommonNode = (node1, node2) => {
+    let cur1 = node1
+    let cur2 = node2
+    let flag1 = false
+    let flag2 = false
+    while (cur1) {
+      if (cur1 === cur2) {
+        return cur1
+      }
+      cur1 = cur1.parentNode
+      cur2 = cur2.parentNode
+      if (cur1 === null && !flag1) {
+        cur1 = node2
+        flag1 = true
+      }
+      if (cur2 === null && !flag2) {
+        cur2 = node1
+        flag2 = true
+      }
+    }
+    return null
+  }
+
+  console.log(findCommonNode(n1, n2))
+</script>
+
+</html>

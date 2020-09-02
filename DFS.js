@@ -1,6 +1,4 @@
-var stop = false
-var path = []
-var data = [{
+const treeData = [{
 	id: 0,
 	children: [{
 		id: 2,
@@ -17,17 +15,24 @@ var data = [{
 	id: 1
 }]
 
-const DFS = data => {
-	for(let i=0; i<data.length; i++) {
-		console.log(data[i].id)
-		if(data[i].children) {
-			DFS(data[i].children)
+//        		0			1
+//        2    	3
+//  	4     5
+//    6 7
+
+const DFS = tree => {
+	for(let i=0; i<tree.length; i++) {
+		console.log(tree[i].id)
+		if(tree[i].children) {
+			DFS(tree[i].children)
 		}
 	}
 }
+console.log('DFS:')
+DFS(treeData)
 
-const BFS = data => {
-	let queue = data
+const BFS = tree => {
+	let queue = [...tree]
 	while(queue.length) {
 		const top = queue.shift()
 		if(top.children) {
@@ -36,6 +41,5 @@ const BFS = data => {
 		console.log(top.id)
 	}
 }
-
-DFS(data)
-BFS(data)
+console.log('BFS:')
+BFS(treeData)

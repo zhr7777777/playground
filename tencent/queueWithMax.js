@@ -12,19 +12,19 @@ class CQueue {
     this.maxQueue = []
     if(queue) {
       queue.forEach(e => {
-        this.give(e)
+        this.pushBack(e)
       })
     }
   }
 
   // max_value
-  take() {
+  getMaxValue() {
     if(this.queue.length === 0) return null
     return this.maxQueue[0]
   }
 
   // push_back
-  give(value) {
+  pushBack(value) {
     this.queue.push(value)
     if(this.maxQueue.length === 0) {
       this.maxQueue.push(value)
@@ -35,8 +35,18 @@ class CQueue {
       this.maxQueue.push(value)
     }
   }
+
+  popFront() {
+    let front = this.queue.shift()
+    if(this.maxQueue.length > 0 && front === this.maxQueue[0]) {
+      this.maxQueue.shift()
+    }
+    return front
+  }
 }
 
-const q = new CQueue([7, 3, 9, 6, 5, 4, 8, 0, 2])
+const q = new CQueue([9, 6, 5, 4, 8, 0, 2])
 console.log(q.maxQueue)
-console.log(q.take())
+console.log(q.getMaxValue())
+console.log(q.popFront())
+console.log(q.getMaxValue())

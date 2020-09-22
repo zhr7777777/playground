@@ -7,33 +7,39 @@
  */
 /**
  * @param {TreeNode} root
+ * @param {number} sum
  * @return {number[][]}
  */
-var levelOrder = function(root) {
-    if(!root) return []
-    let queue = [root]
+var pathSum = function(root, sum) {
+    let stack = []
+    let cur = root
     let result = []
-    let level = 0
-    while(queue.length > 0) {
-        let nextLevel = []
-        let temp = []
-        while(queue.length > 0) {
-            let first = queue.shift()
-            if(first.left) {
-                nextLevel.push(first.left)
-            }
-            if(first.right) {
-                nextLevel.push(first.right)
-            }
-            if(level % 2 === 0) {
-                temp.push(first.val)
+    while(cur || stack.length > 0) {
+        if(cur) {
+            stack.push(cur)
+            cur = cur.left
+        } else {
+            let top = stack[stack.length - 1]
+            if(top.visited) {
+                if(!top.left && !top.right) {
+                    if(getPathSum(stack) === sum) {
+                        let temp = [].concat(stack.map(p => p.val))
+                        result.push(temp)
+                    }
+                }
+                stack.pop()
             } else {
-                temp.unshift(first.val)
+                top.visited = true
+                cur = top.right
             }
         }
-        level++
-        result.push(temp)
-        queue = nextLevel
     }
     return result
 };
+
+function getPathSum(paths) {
+    return paths.map(p => p.val).reduce((pre, cur) => {
+        pre += cur
+        return pre
+    }, 0)
+}

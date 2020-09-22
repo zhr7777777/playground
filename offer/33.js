@@ -1,33 +1,23 @@
 /**
- * Definition for a binary tree node.
- * function TreeNode(val) {
- *     this.val = val;
- *     this.left = this.right = null;
- * }
+ * @param {number[]} postorder
+ * @return {boolean}
  */
-/**
- * @param {TreeNode} root
- * @return {number[][]}
- */
-var levelOrder = function(root) {
-    if(!root) return []
-    let queue = [root]
-    let result = []
-    while(queue.length > 0) {
-        let nextLevel = []
-        let temp = []
-        while(queue.length > 0) {
-            let first = queue.shift()
-            if(first.left) {
-                nextLevel.push(first.left)
-            }
-            if(first.right) {
-                nextLevel.push(first.right)
-            }
-            temp.push(first.val)
+var verifyPostorder = function(postorder) {
+    if(postorder.length === 0) return true
+    if(postorder.length === 1) return true
+    if(postorder.length === 2) return true
+    let root = postorder[postorder.length - 1]
+    let left = []
+    let right = []
+    let i
+    for(i=0; i<postorder.length-1; i++) {
+        if(postorder[postorder.length-2-i] > root) {
+            right.unshift(postorder[postorder.length-2-i])
+        } else {
+            break
         }
-        result.push(temp)
-        queue = nextLevel
     }
-    return result
+    left = postorder.slice(0, postorder.length-1-i)
+    if(Math.max(...left) > root) return false
+    return verifyPostorder(left) && verifyPostorder(right)
 };

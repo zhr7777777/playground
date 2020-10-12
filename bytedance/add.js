@@ -1,4 +1,8 @@
 // 实现一个add方法，使计算结果能够满足如下预期：
+console.log(add(1)(2)(3)) // 6
+console.log(add(1, 2, 3)(4)) // 10
+console.log(add(1)(2)(3)(4)(5)) // 15
+
 var add = function () {
 	var args = []
 	var adder = function () {
@@ -12,9 +16,14 @@ var add = function () {
 	return adder.apply(null, [...arguments]) // pass cur arguments
 }
 
-
-
-console.log(add(1)(2)(3)) // 6
-console.log(add(1, 2, 3)(4)) // 10
-console.log(add(1)(2)(3)(4)(5)) // 15
-
+function add() {
+	let args = []
+	let adder = function() {
+		args = args.concat([...arguments])
+		return adder
+	}
+	adder.valueOf = function() {
+		return args.reduce((pre, cur) => pre + cur, 0)
+	}
+	return adder.apply(null, [...arguments])
+}

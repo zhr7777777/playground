@@ -27,7 +27,7 @@ function copy(src) {
   // 空或者非对象直接返回（考虑typeof null === 'object'是true）
   if (!src || !(typeof src === 'object')) return src
   // 判断是对象还是数组
-  let dest = isArray(src) ? [] : {}
+  let dest = Array.isArray(src) ? [] : {}
 
   // 处理循环引用问题
   if (objectRecords.has(src)) {

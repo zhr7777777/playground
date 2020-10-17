@@ -13,14 +13,12 @@ const fn2 = source => {
 const fn3 = source => {
     console.log('fn3 executed')
     source++
-    console.log(source)
     return source
 }
 
-const fns = [fn1, fn2, fn3]
+const fns = [fn1, fn2, fn3] // fn1( fn2( fn3() ) )
 
 const compose = (i, src) => {
-    // console.log(i)
     if(i === fns.length - 1) {
         return fns[i](src)
     }

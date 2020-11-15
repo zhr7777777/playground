@@ -112,36 +112,70 @@
 // let a = {}
 // console.log(a.toString())
 
-const fn1 = source => {
-    console.log('fn1 executed')
-    source++
-    return source
-}
+// const fn1 = source => {
+//     console.log('fn1 executed')
+//     source++
+//     return source
+// }
 
-const fn2 = source => {
-    console.log('fn2 executed')
-    source++
-    return source
-}
+// const fn2 = source => {
+//     console.log('fn2 executed')
+//     source++
+//     return source
+// }
 
-const fn3 = source => {
-    console.log('fn3 executed')
-    source++
-    console.log(source)
-    return source
-}
+// const fn3 = source => {
+//     console.log('fn3 executed')
+//     source++
+//     console.log(source)
+//     return source
+// }
 
-const fns = [fn1, fn2, fn3]
+// const fns = [fn1, fn2, fn3]
 
-const compose = (i, src) => {
-    // console.log(i)
-    if(i === fns.length - 1) {
-        return fns[i](src)
+// const compose = (i, src) => {
+//     // console.log(i)
+//     if(i === fns.length - 1) {
+//         return fns[i](src)
+//     }
+//     const result = compose(i+1, src)
+//     return fns[i](result)
+// }
+
+// console.log(compose(0, 7))
+
+// function isEmptyObject(value) {
+//     // return Object.prototype.isPrototypeOf(value)
+//     return Object.getOwnPropertyNames(value).length === 0
+// }
+
+// console.log(isEmptyObject([]))
+
+const getArrayMaxDeep = arr => {
+    let max = 0
+    const dfs = (arr, deep) => {
+        if(!Array.isArray(arr)) {
+            if(deep > max) {
+                max = deep
+            }
+            return 
+        }
+        if(arr.length === 0) {
+            if(deep + 1 > max) {
+                max = deep + 1
+            }
+            return 
+        }
+        for(let i=0; i<arr.length; i++) {
+            dfs(arr[i], deep + 1)
+        }
     }
-    const result = compose(i+1, src)
-    return fns[i](result)
+    dfs(arr, 0)
+    return max
 }
 
-console.log(compose(0, 7))
+let test = [[[[1]]], [[2]]]
+console.log(test.toString())
 
+console.log(getArrayMaxDeep(test))
 

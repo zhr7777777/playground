@@ -151,31 +151,31 @@
 
 // console.log(isEmptyObject([]))
 
-const getArrayMaxDeep = arr => {
-    let max = 0
-    const dfs = (arr, deep) => {
-        if(!Array.isArray(arr)) {
-            if(deep > max) {
-                max = deep
-            }
-            return 
-        }
-        if(arr.length === 0) {
-            if(deep + 1 > max) {
-                max = deep + 1
-            }
-            return 
-        }
-        for(let i=0; i<arr.length; i++) {
-            dfs(arr[i], deep + 1)
-        }
-    }
-    dfs(arr, 0)
-    return max
-}
+// const getArrayMaxDeep = arr => {
+//     let max = 0
+//     const dfs = (arr, deep) => {
+//         if(!Array.isArray(arr)) {
+//             if(deep > max) {
+//                 max = deep
+//             }
+//             return 
+//         }
+//         if(arr.length === 0) {
+//             if(deep + 1 > max) {
+//                 max = deep + 1
+//             }
+//             return 
+//         }
+//         for(let i=0; i<arr.length; i++) {
+//             dfs(arr[i], deep + 1)
+//         }
+//     }
+//     dfs(arr, 0)
+//     return max
+// }
 
-let test = [[[[1]]], [[2]]]
-console.log(test.toString())
+// let test = [[[[1]]], [[2]]]
+// console.log(test.toString())
 
-console.log(getArrayMaxDeep(test))
+// console.log(getArrayMaxDeep(test))
 

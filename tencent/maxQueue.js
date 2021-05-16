@@ -5,7 +5,7 @@
 // [[], [1], [2], [], [], []]
 // 输出: [null, null, null, 2, 1, 2]
 
-class CQueue {
+class MaxQueue {
   constructor(queue, compare) {
     this.queue = []
     this.compare = compare || ((a, b) => a - b)
@@ -45,8 +45,10 @@ class CQueue {
   }
 }
 
-const q = new CQueue([9, 6, 5, 4, 8, 0, 2])
+const q = new MaxQueue([9, 6, 5, 4, 8, 0, 2])
 console.log(q.maxQueue)
+console.log(q.getMaxValue())
+console.log(q.popFront())
 console.log(q.getMaxValue())
 console.log(q.popFront())
 console.log(q.getMaxValue())

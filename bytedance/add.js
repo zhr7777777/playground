@@ -26,15 +26,28 @@
 //   return adder.apply(null, [...arguments])
 // }
 
-let add = (...initArgs) => {
-  let allArgs = initArgs
-  let adder = (...curArgs) => {
-    allArgs = allArgs.concat(curArgs)
+// let add = (...initArgs) => {
+//   let allArgs = initArgs
+//   let adder = (...curArgs) => {
+//     allArgs = allArgs.concat(curArgs)
+//     return adder
+//   }
+//   adder.valueOf = () => {
+//     return allArgs.reduce((pre, cur) => pre + cur, 0)
+//   }
+//   return adder
+// }
+
+const add = (...args) => {
+  const argCollector = args
+
+  const adder = (...moreArgs) => {
+    argCollector.push(...moreArgs)
     return adder
   }
-  adder.valueOf = () => {
-    return allArgs.reduce((pre, cur) => pre + cur, 0)
-  }
+
+  adder.valueOf = () => argCollector.reduce((pre, cur) => pre + cur, 0)
+
   return adder
 }
 

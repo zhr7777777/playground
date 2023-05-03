@@ -19,22 +19,26 @@
 
 class Scheduler {
     constructor() {
-       this.runing = []
+       // this.runing = []
+       this.runingNum = 0
        this.pending = []
     }
     
     add(fn) {
-        if(this.runing.length >= 2) {
+        if(this.runingNum >= 2) {
             return new Promise((resolve) => {
                 this.pending.push(() => fn().then(resolve))    
             })
         } else {
-            this.runing.push(fn) 
+            // this.runing.push(fn)
+            this.runingNum++
             return fn().then(() => {
-                this.runing.shift()
+                // this.runing.shift()
+                this.runingNum--
                 if(this.pending.length) {
                     let first = this.pending.shift()
-                    this.add(first)                   
+                    // this.add(first)
+                    first()                   
                 }
             })
         }

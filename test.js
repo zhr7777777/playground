@@ -158,13 +158,13 @@
 //             if(deep > max) {
 //                 max = deep
 //             }
-//             return 
+//             return
 //         }
 //         if(arr.length === 0) {
 //             if(deep + 1 > max) {
 //                 max = deep + 1
 //             }
-//             return 
+//             return
 //         }
 //         for(let i=0; i<arr.length; i++) {
 //             dfs(arr[i], deep + 1)
@@ -179,3 +179,40 @@
 
 // console.log(getArrayMaxDeep(test))
 
+// const nums1 = [4, 1, 3, 2, -1, -7, 9, 0]
+// const nums2 = [49, 38, 65, 97, 76, 13, 27, 49]
+// const nums3 = [4, 3, 2, 1]
+// const nums4 = [1, 4, 2, 1, -1, 5, 7]
+
+// quickSort(nums1)
+// console.log(nums1)
+
+// const getArrayMaxDeep = arr => {
+//     let res = 0
+//     const dfs = (arr, deep) => {
+//         if(!Array.isArray(arr)) {
+//             res = Math.max(res, deep)
+//             return
+//         }
+//         if(arr.length === 0) {
+//             res = Math.max(res, deep + 1)
+//             return
+//         }
+//         for(let i=0; i<arr.length; i++) {
+//             dfs(arr[i], deep + 1)
+//         }
+//     }
+//     dfs(arr, 0)
+//     return res
+// }
+
+// let test = [[[[1, []]]], [[2]]]
+
+// console.log(getArrayMaxDeep(test))
+
+function outputNumbers(count) {
+  // for (var i=0; i < count; i++){
+  // alert(i); }
+  var i; //重新声明变量
+  alert(i); //计数
+}
